@@ -1,0 +1,27 @@
+# Builds and tests PQ Studio on Linux, macOS and Windows on every push and
+# pull request.
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+      - name: Rust
+        run: rustup update stable --no-self-update && rustup default stable
+      - name: Test
+        run: cargo test --release

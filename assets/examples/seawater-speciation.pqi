@@ -1,0 +1,35 @@
+TITLE Seawater speciation (major ions)
+SOLUTION 1 Seawater
+    temp      25
+    pH        8.1
+    pe        4
+    density   1.025
+    units     mmol/kgw
+    Na         468.5
+    K          10.2
+    Mg         52.8
+    Ca         10.3
+    Cl         545.9 charge
+    S(6)       28.2
+    Alkalinity 2.3 as HCO3
+
+SELECTED_OUTPUT 1
+    -file               seawater.sel
+    -simulation         true
+    -state              true
+    -solution           true
+    -distance           true
+    -time               true
+    -step               true
+    -pH                 true
+    -pe                 true
+    -reaction           false
+    -temperature        false
+    -alkalinity         false
+    -ionic_strength     true
+    -water              false
+    -charge_balance     false
+    -percent_error      false
+    -molalities         Ca+2 Mg+2 CaSO4 MgSO4 NaSO4- CO3-2
+
+END

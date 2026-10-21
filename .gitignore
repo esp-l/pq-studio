@@ -1,0 +1,5 @@
+/target
+/packaging/macos/build
+/packaging/linux/build
+/packaging/windows/build
+/dist/out

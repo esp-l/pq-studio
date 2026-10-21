@@ -1,0 +1,35 @@
+TITLE Calcite dissolution as CO2 is added
+SOLUTION 1 Pure water
+    temp      25
+    pH        7
+    pe        4
+    density   1
+    units     mmol/kgw
+
+EQUILIBRIUM_PHASES 1
+    Calcite              0.0 10
+
+REACTION 1 CO2 addition
+    CO2 1.0
+    0.01 moles in 20 steps
+
+SELECTED_OUTPUT 1
+    -file               calcite-co2.sel
+    -simulation         true
+    -state              true
+    -solution           true
+    -distance           true
+    -time               true
+    -step               true
+    -pH                 true
+    -pe                 true
+    -reaction           true
+    -temperature        false
+    -alkalinity         false
+    -ionic_strength     false
+    -water              false
+    -charge_balance     false
+    -percent_error      false
+    -totals             Ca C(4)
+
+END
