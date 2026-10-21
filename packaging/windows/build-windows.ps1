@@ -26,7 +26,10 @@ function Invoke-Native {
 $Root = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 $cfg = @{}
 foreach ($line in Get-Content (Join-Path $Root 'packaging\phreeqc.env')) {
-    if ($line -match '^([A-Z_]+)=(.+)$') { $cfg[$Matches[1]] = $Matches[2].Trim() }
+    if ($line -match '^([A-Z0-9_]+)=(.+)$') { $cfg[$Matches[1]] = $Matches[2].Trim() }
+}
+foreach ($key in 'PHREEQC_VERSION', 'PHREEQC_TAG', 'PHREEQC_SHA256') {
+    if (-not $cfg[$key]) { throw "$key missing from packaging\phreeqc.env" }
 }
 $PhreeqcVersion = $cfg['PHREEQC_VERSION']
 $PhreeqcUrl = "https://github.com/phreeqc-dev/phreeqc3/releases/download/$($cfg['PHREEQC_TAG'])/phreeqc-$PhreeqcVersion.tar.gz"
